@@ -7,7 +7,19 @@ import Message from '../components/message';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class MessageList extends Component {
-  static defaultProps = {
+  render() {
+    return (
+      <div className="message-list">
+        {this.props.messages.map((message) => {
+          return <Message  key={message.created_at} message={message} />;
+        })}
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(){
+  return {
     messages: [
       {
         "author":"anonymous92",
@@ -21,16 +33,6 @@ class MessageList extends Component {
       }
     ]
   }
-
-  render() {
-    return (
-      <div className="message-list">
-        {this.props.messages.map((message) => {
-          return <Message  message={message} key={message.create_at} />;
-        })}
-      </div>
-    );
-  }
 }
 
-export default connect(null, null) (MessageList);
+export default connect(mapStateToProps) (MessageList);
