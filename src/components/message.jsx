@@ -2,8 +2,9 @@ import React from 'react';
 
 const Message = (props) => {
   return (
-    <div>
-      <h1>This is a message</h1>
+    <div className="message">
+      <h3>{props.message.author}</h3>
+      <p>{props.message.content}</p>
     </div>
   );
 }
