@@ -8,9 +8,26 @@ import { createStore, combineReducers } from 'redux';
 import App from './components/app';
 import '../assets/stylesheets/application.scss';
 
+// importing reducer files
+import messagesReducer from './reducers/messages_reducer';
+import channelsReducer from './reducers/channels_reducer';
+import selectedChannelReducer from './reducers/selected_channel_reducer';
+import currentUserReducer from './reducers/current_user_reducer';
+
+
+const initialState = {
+  messages: [],
+  channels: ['general', 'react', 'paris'],
+  selectedChannel: 'general',
+  currentUser: prompt("What is your username") || "Anonymous"
+}
+
 // State and reducers
 const reducers = combineReducers({
-  changeMe: (state = null, action) => state
+  messages: messagesReducer,
+  channels: channelsReducer,
+  selectedChannel: selectedChannelReducer,
+  currentUser: currentUserReducer
 });
 
 // render an instance of the component in the DOM
