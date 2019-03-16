@@ -11,6 +11,10 @@ class MessageForm extends Component {
     this.setState({ value: event.target.value });
   }
 
+  handleSubmit = () => {
+    // Todo
+  }
+
   render() {
     return(
       <form action="">
