@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 import Message from '../components/message';
 
-
 // eslint-disable-next-line react/prefer-stateless-function
 class MessageList extends Component {
+
   render() {
     return (
       <div className="message-list">
