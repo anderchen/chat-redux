@@ -1,7 +1,8 @@
 // TODO: add and export your own actions
 export const FETCH_MESSAGES = 'FETCH_MESSAGES';
+export const MESSAGE_POSTED = 'MESSAGE_POSTED';
 
-export default function fetchMessages(channel) {
+export function fetchMessages(channel) {
   const promise = fetch(`https://wagon-chat.herokuapp.com/${channel}/messages`)
     .then(response => response.json());
 
@@ -11,6 +12,21 @@ export default function fetchMessages(channel) {
   };
 }
 
-export default function createMessage(channel, author, content) {
-  
+export function createMessage(channel, author, content) {
+  const url = `https://wagon-chat.herokuapp.com/${channel}/messages`;
+  const body = { author, content };
+
+  const promise = fetch(url, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  }).then(response => response.json());
+
+  return {
+    type: MESSAGE_POSTED,
+    payload: promise
+  }
 }
